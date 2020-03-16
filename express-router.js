@@ -52,8 +52,8 @@ router.post('/', (req, res) => {
     console.log(postInfo)
     Posts.insert(postInfo)
         .then(post => {
-            if (postInfo.title && postInfo.content) {
-                postInfo.id = shortid.generate();
+            console.log(post)
+            if (postInfo.title && postInfo.contents) {
                 res.status(201).json(postInfo)
             } else {
                 res.status(400).json({ errorMessage: "Please provide a title and contents for the post." })
@@ -87,11 +87,11 @@ router.put('/:id', (req, res) => {
 
     Posts.update(id, updates)
         .then(post => {
-            if (updates.title && updates.contents) {
+            if (post === 1) {
                 res.status(200).json(post)
-            } else if (!updates.title || updates.contents) {
+            } else if (!updates.title || !updates.contents) {
                 res.status(400).json({ errorMessage: "Please provide a title and contents for the post." })
-            } else {
+            } else if (post === 0) {
                 res.status(404).json({ message: "The post with the specified ID does not exist." })
             }
         })
