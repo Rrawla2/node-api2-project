@@ -67,13 +67,13 @@ router.post('/', (req, res) => {
 router.post('/:id/comments', (req, res) => {
     const { id } = req.params
     const comments = req.body
-    comments.post_id = id;
-    
+    comments.post_id = id   
         Posts.insertComment(comments)
         .then(comment => {
-            if (comments === 1) {
+            console.log(comment)
+            if (comment.id) {
                 res.status(201).json(comment)
-            } else if (!comment) {
+            } else if (!comments) {
                 res.status(400).json({ errorMessage: "Please provide text for the comment"})
             } else {
                 res.status(404).json({ message: "The post with the specified ID does not exist." })
