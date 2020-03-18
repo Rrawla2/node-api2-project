@@ -104,7 +104,7 @@ XXX - If there's an error while saving the _post_:
   - respond with HTTP status code `500` (Server Error).
   - return the following JSON object: `{ error: "There was an error while saving the post to the database" }`.
 
-*** When the client makes a `POST` request to `/api/posts/:id/comments`:
+XXX When the client makes a `POST` request to `/api/posts/:id/comments`:
 
 XXX - If the _post_ with the specified `id` is not found:
 
